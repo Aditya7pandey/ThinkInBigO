@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "ThinkInBigO",
+  "version": "1.0",
+  "description": "Master Time and Space Complexity with ThinkInBigO - AI-powered feedback for LeetCode.",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://leetcode.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/problems/*/submissions/*", "https://leetcode.com/problems/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js", "logo.png"],
+      "matches": ["https://leetcode.com/*"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

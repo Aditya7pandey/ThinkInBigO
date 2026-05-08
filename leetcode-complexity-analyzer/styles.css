@@ -1,0 +1,218 @@
+/* Modal Styles */
+#lc-complexity-modal-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.lc-modal-overlay {
+    background: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+.lc-modal-container {
+    background: #282828;
+    color: #eff1f6;
+    width: 450px;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #3e3e3e;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.lc-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+.lc-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lc-modal-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.lc-modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #ffa116; /* LeetCode orange */
+}
+
+.lc-modal-close {
+    cursor: pointer;
+    font-size: 24px;
+    color: #9e9e9e;
+    transition: color 0.2s;
+}
+
+.lc-modal-close:hover {
+    color: #fff;
+}
+
+.lc-problem-info {
+    font-size: 14px;
+    color: #9e9e9e;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #3e3e3e;
+}
+
+.lc-input-group {
+    margin-bottom: 16px;
+}
+
+.lc-input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #eff1f6;
+}
+
+.lc-input-group input {
+    width: 100%;
+    background: #3e3e3e;
+    border: 1px solid #5a5a5a;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.lc-input-group input:focus {
+    outline: none;
+    border-color: #ffa116;
+}
+
+.lc-result-container {
+    margin-top: 20px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px dashed #5a5a5a;
+}
+
+.hidden { display: none; }
+
+.lc-loader {
+    text-align: center;
+    color: #ffa116;
+    font-style: italic;
+}
+
+.lc-result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.lc-result-item {
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.lc-result-item label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.lc-correct { background: rgba(45, 181, 93, 0.15); border: 1px solid #2db55d; color: #2db55d; }
+.lc-incorrect { background: rgba(239, 71, 67, 0.15); border: 1px solid #ef4743; color: #ef4743; }
+
+.lc-explanation {
+    font-size: 13px;
+    line-height: 1.5;
+    background: #333;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.lc-explanation strong { color: #ffa116; }
+
+.lc-confidence {
+    font-size: 11px;
+    color: #777;
+    margin-top: 8px;
+    text-align: right;
+}
+
+.lc-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.lc-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    transition: all 0.2s;
+}
+
+.lc-btn-primary {
+    background: #ffa116;
+    color: #000;
+}
+
+.lc-btn-primary:hover {
+    background: #ffb84d;
+}
+
+.lc-btn-primary:disabled {
+    background: #5a5a5a;
+    cursor: not-allowed;
+}
+
+.lc-btn-secondary {
+    background: transparent;
+    color: #9e9e9e;
+}
+
+.lc-btn-secondary:hover {
+    color: #fff;
+    background: #3e3e3e;
+}
+
+.lc-privacy-note {
+    font-size: 11px;
+    color: #666;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.lc-error {
+    color: #ef4743;
+    text-align: center;
+    font-size: 14px;
+}
