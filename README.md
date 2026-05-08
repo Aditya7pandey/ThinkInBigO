@@ -1,227 +1,207 @@
-# 🚀 ThinkInBigO
+<div align="center">
 
-> Think. Analyze. Optimize.
+<img src="leetcode-complexity-analyzer/logo.png" alt="ThinkInBigO Logo" width="96" height="96" />
 
-A Chrome Extension that helps developers build the habit of analyzing **Time Complexity (TC)** and **Space Complexity (SC)** after every successful LeetCode submission using AI-powered feedback.
+# ThinkInBigO
 
----
+**Think. Analyze. Optimize.**
 
-## ✨ Why ThinkInBigO?
+A Chrome Extension that builds the habit of analyzing Time & Space Complexity after every LeetCode submission — powered by AI.
 
-Many developers solve LeetCode problems but skip one of the most important interview habits:
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=flat-square&logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore)
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/)
+[![Gemini API](https://img.shields.io/badge/Gemini-API-8E75B2?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-* ❌ Analyzing Time Complexity
-* ❌ Analyzing Space Complexity
-* ❌ Explaining reasoning clearly
-
-ThinkInBigO solves this by automatically prompting users after every accepted submission and checking their complexity analysis using an LLM.
-
-This turns passive problem-solving into active interview preparation.
+[Installation](#-installation) · [How It Works](#-how-it-works) · [Features](#-features) · [Contributing](#-contributing)
 
 ---
 
-# 🎯 Features
+</div>
 
-## ✅ Automatic Accepted Submission Detection
+## The Problem
 
-* Detects successful LeetCode submissions
-* Uses network interception for reliability
-* DOM fallback support
+Most developers grind LeetCode problems, hit "Accepted," and immediately move to the next one.
 
-## 🧠 AI-Powered Complexity Evaluation
+But in real interviews, solving the problem is only half the answer. Interviewers always follow up with:
 
-* Evaluates:
+> *"What's the time complexity of your solution?"*
+> *"Can you do better on space?"*
 
-  * Time Complexity
-  * Space Complexity
-* Compares with user input
-* Provides concise explanations
-
-## ⚡ Instant Feedback
-
-* Correctness indicators
-* Confidence scoring
-* Short reasoning explanation
-
-## 🌙 Modern UI
-
-* Dark mode friendly
-* Minimal & distraction-free
-* Smooth modal popup experience
-
-## 💾 Learning History
-
-Stores:
-
-* Problem name
-* User answers
-* Correct TC/SC
-* Timestamp
-* 
----
-
-# ⚙️ Tech Stack
-
-| Technology           | Purpose                |
-| -------------------- | ---------------------- |
-| JavaScript           | Core Extension Logic   |
-| Chrome Extension API | Browser Integration    |
-| Manifest V3          | Extension Architecture |
-| Gemini API           | AI Complexity Analysis |
-| HTML/CSS             | UI Components          |
-| chrome.storage       | Local Persistence      |
+**ThinkInBigO bridges that gap.** Every accepted submission becomes a deliberate complexity analysis exercise, with instant AI-powered feedback on whether you got it right.
 
 ---
 
-# 🧠 How It Works
+## How It Works
 
-```text
-LeetCode Submission
-        ↓
-Accepted Response Detected
-        ↓
-Popup asks for TC & SC
-        ↓
-Code + User Answer sent to Gemini API
-        ↓
-AI evaluates complexities
-        ↓
-Feedback shown instantly
+```
+Accepted Submission on LeetCode
+           ↓
+Extension detects the result (network interception + DOM fallback)
+           ↓
+Modal prompts you for TC and SC
+           ↓
+Your code + analysis → Gemini API
+           ↓
+AI evaluates correctness, confidence, and reasoning
+           ↓
+Instant feedback with explanation
+           ↓
+Result saved to your local history
 ```
 
 ---
 
-# 📦 Project Structure
+## Features
 
-```bash
-ThinkInBigO/
-│
-├── manifest.json
-├── background.js
-├── content.js
-├── injected.js
-├── popup.html
-├── popup.js
-├── styles.css
-├── icons/
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
-└── README.md
-```
+### Automatic Submission Detection
+Intercepts LeetCode's network responses to catch accepted submissions in real time. A DOM fallback ensures reliability even if the API response structure changes.
+
+### AI-Powered Complexity Evaluation
+Sends your code and your stated TC/SC to Gemini. The model returns:
+- The correct time and space complexity
+- Whether your answer was right
+- A concise explanation of the reasoning
+- A confidence score
+
+### Instant Feedback Modal
+A clean, distraction-free popup appears after every accepted submission. No navigating away, no extra tabs — just type your answer and get feedback.
+
+### Learning History
+Every attempt is stored locally with:
+- Problem name
+- Your answer vs. the correct answer
+- Timestamp
+
+Track your progress and spot recurring blind spots over time.
+
+### Dark Mode Friendly UI
+Minimal design that matches LeetCode's dark theme. Built to stay out of your way until you need it.
 
 ---
 
-# 🚀 Installation
+## Installation
 
-## 1️⃣ Clone the Repository
+### 1. Clone the repo
 
 ```bash
 git clone https://github.com/your-username/ThinkInBigO.git
+cd ThinkInBigO
+```
+
+### 2. Load the extension in Chrome
+
+1. Go to `chrome://extensions/`
+2. Toggle on **Developer Mode** (top right)
+3. Click **Load unpacked**
+4. Select the `ThinkInBigO/` folder
+
+### 3. Add your Gemini API key
+
+1. Visit [Google AI Studio](https://aistudio.google.com/)
+2. Generate an API key
+3. Open the extension popup → **Settings** → paste your key
+
+You're ready. Solve a problem on LeetCode and get an accepted submission to see it in action.
+
+---
+
+## Project Structure
+
+```
+ThinkInBigO/
+├── manifest.json       # Extension config (Manifest V3)
+├── background.js       # Service worker — network interception
+├── content.js          # LeetCode page interaction, modal injection
+├── injected.js         # Script injected into page context
+├── popup.html          # Extension popup UI
+├── popup.js            # Popup logic (history, settings)
+├── styles.css          # Modal and popup styles
+└── icons/
+    ├── icon16.png
+    ├── icon48.png
+    └── icon128.png
 ```
 
 ---
 
-## 2️⃣ Open Chrome Extensions
+## Tech Stack
 
-Go to:
-
-```text
-chrome://extensions/
-```
-
-Enable:
-
-✅ Developer Mode
+| Layer | Technology |
+|---|---|
+| Extension Architecture | Chrome Extension API · Manifest V3 |
+| Core Logic | JavaScript |
+| AI Evaluation | Gemini API |
+| UI | HTML · CSS |
+| Local Storage | `chrome.storage` |
 
 ---
 
-## 3️⃣ Load Extension
+## Example
 
-Click:
+**User submits a Two Sum solution. Modal appears:**
 
-```text
-Load unpacked
-```
+> **Your TC:** `O(n)`
+> **Your SC:** `O(1)`
 
-Select the project folder.
-
----
-
-# 🔑 Gemini API Setup
-
-This extension uses the Gemini API for AI-powered complexity analysis.
-
-## Get API Key
-
-1. Visit Google AI Studio
-2. Create an API Key
-3. Paste it inside extension settings
-
----
-
-# 🛡️ Privacy
-
-* Your code may be sent to the Gemini API for analysis.
-* No personal information is collected.
-* No data is sold or shared.
-* Users can disable AI evaluation anytime.
-
----
-
-# 🧪 Example
-
-## User Input
-
-```text
-TC: O(n)
-SC: O(1)
-```
-
-## AI Response
+**Gemini responds:**
 
 ```json
 {
-  "correct_tc": "O(n log n)",
-  "correct_sc": "O(1)",
-  "explanation": "Sorting dominates the runtime, resulting in O(n log n)."
+  "correct_tc": "O(n)",
+  "correct_sc": "O(n)",
+  "tc_correct": true,
+  "sc_correct": false,
+  "explanation": "Time complexity is O(n) — one pass through the array. Space complexity is O(n), not O(1), because the hash map stores up to n elements in the worst case.",
+  "confidence": 0.97
 }
 ```
 
----
-
-# 🔥 Future Improvements
-
-* 📊 Analytics Dashboard
-* 🧠 Pattern Detection (DP, Graph, Binary Search)
-* 🏆 Streak System
-* 📈 Weakness Tracking
-* 🤖 Multi-LLM Support
-* 🌐 Firefox Support
+**Feedback shown instantly inside the modal.**
 
 ---
 
-# 🤝 Contributing
+## Privacy
 
-Contributions are welcome.
-
-Feel free to:
-
-* Open issues
-* Submit PRs
-* Suggest improvements
+- Your code is sent to the Gemini API solely for complexity analysis.
+- No personal data is collected or stored remotely.
+- All history is stored locally via `chrome.storage` — it never leaves your machine.
+- AI evaluation can be disabled in settings at any time.
 
 ---
 
-# ⭐ Support
+## Roadmap
 
-If you like this project:
+- [ ] Analytics dashboard — visualize your accuracy trends over time
+- [ ] Pattern tagging — auto-detect DP, Graph, Binary Search, etc.
+- [ ] Streak system — maintain your daily analysis habit
+- [ ] Weakness tracker — flag problem types where your SC/TC is consistently wrong
+- [ ] Multi-LLM support — Claude, GPT-4, local models
+- [ ] Firefox support
 
-⭐ Star the repository
-
-It helps a lot.
 ---
 
-# 👨‍💻 Author
+## Contributing
 
-Built with ❤️ for developers preparing for coding interviews.
+Contributions are welcome. If you find a bug, have a feature idea, or want to improve the AI prompt — open an issue or submit a PR.
+
+1. Fork the repo
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m 'feat: add your feature'`
+4. Push and open a PR
+
+---
+
+## License
+
+MIT — free to use, modify, and distribute.
+
+---
+
+<div align="center">
+
+Built for developers who want to interview, not just solve.
+
+⭐ If this helps your prep, a star goes a long way.
+
+</div>
