@@ -117,10 +117,7 @@ ThinkInBigO/
 ├── popup.html          # Extension popup UI
 ├── popup.js            # Popup logic (history, settings)
 ├── styles.css          # Modal and popup styles
-└── icons/
-    ├── icon16.png
-    ├── icon48.png
-    └── icon128.png
+└── logo.png
 ```
 
 ---
